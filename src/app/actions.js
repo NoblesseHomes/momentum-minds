@@ -106,7 +106,8 @@ async function verifyTurnstile(token) {
   }
 }
 
-export async function sendFeedbackEmail(previousState, formData) {
+export async function sendFeedbackEmail(formData) {
+  const cookieStore = await cookies();
   const name = formData.get('name')?.toString().trim();
   const email = formData.get('email')?.toString().trim();
   const phone = formData.get('phone')?.toString().trim();
@@ -156,7 +157,10 @@ export async function sendFeedbackEmail(previousState, formData) {
   }
 
   try {
-    await resend.emails.send({
+    // Resend's SDK does not throw on API errors — it resolves with
+    // { data, error }, so the error has to be checked explicitly instead
+    // of relying on catch to see it.
+    const { error } = await resend.emails.send({
       // Po připojení vlastní domény v Resendu nahraďte za info@momentumminds.cz.
       from: 'Momentum Minds <info@yourdomain.com>',
       to: 'info@yourdomain.com',
@@ -164,6 +168,15 @@ export async function sendFeedbackEmail(previousState, formData) {
       subject: `Nová poptávka z webu — ${name}`,
       html: buildFeedbackEmailHtml({ name, email, phone, topic, message }),
     });
+
+    if (error) {
+      console.error('Chyba Resend API (sendFeedbackEmail):', error);
+      return {
+        success: false,
+        error: 'Zprávu se nepodařilo odeslat. Zkuste to prosím později.',
+      };
+    }
+
     return { success: true };
   } catch (error) {
     // Skutečnou chybu logujeme na serveru, uživateli jde jen obecná zpráva.

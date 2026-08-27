@@ -1,7 +1,7 @@
 'use client';
 
 import Script from 'next/script';
-import { useActionState, useRef, useEffect } from 'react';
+import { useState } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import Image from 'next/image';
 import { TbCircleCheck, TbMail, TbMapPin, TbPhone } from 'react-icons/tb';
@@ -30,18 +30,46 @@ export default function Contact() {
   const headingReveal = useRevealProps();
   const formReveal = useRevealProps(0.06);
 
-  const [state, formAction, isPending] = useActionState(sendFeedbackEmail, {
-    success: false,
-    error: null,
+  // One controlled source of truth for the form's own values, plus one
+  // for where the submission itself stands — no `useActionState`/
+  // `<form action={fn}>`, since mixing that with controlled inputs meant
+  // the data effectively lived in two places at once (DOM-driven FormData
+  // vs. React state). A plain onSubmit handler calling the server action
+  // directly keeps it in one place.
+  const [formValues, setFormValues] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    topic: TOPICS[0],
+    message: '',
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState(null);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
 
-  const formRef = useRef(null);
+  function handleFieldChange(event) {
+    const { name, value } = event.target;
+    setFormValues((previous) => ({ ...previous, [name]: value }));
+  }
 
-  useEffect(() => {
-    if (state?.success) {
-      formRef.current?.reset();
+  async function handleSubmit(event) {
+    event.preventDefault();
+    setIsSubmitting(true);
+    setSubmitError(null);
+
+    const formData = new FormData(event.currentTarget);
+    const result = await sendFeedbackEmail(formData);
+
+    setIsSubmitting(false);
+
+    if (result?.success) {
+      setSubmitSuccess(true);
+    } else {
+      setSubmitError(
+        result?.error ?? 'Zprávu se nepodařilo odeslat. Zkuste to prosím později.'
+      );
     }
-  }, [state]);
+  }
 
   return (
     <>
@@ -131,7 +159,7 @@ export default function Contact() {
               </ul>
             </div>
 
-            {state.success ? (
+            {submitSuccess ? (
               <div className="flex items-start gap-3 rounded-2xl border border-accent-primary/30 bg-accent-primary/5 p-6">
                 <TbCircleCheck
                   size={22}
@@ -143,7 +171,7 @@ export default function Contact() {
                 </p>
               </div>
             ) : (
-              <form ref={formRef} action={formAction} className="space-y-5">
+              <form onSubmit={handleSubmit} className="space-y-5">
                 <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
                   <div>
                     <label
@@ -156,6 +184,8 @@ export default function Contact() {
                       id="name"
                       name="name"
                       type="text"
+                      value={formValues.name}
+                      onChange={handleFieldChange}
                       required
                       className="mt-1.5 h-11 w-full rounded-lg border border-border bg-surface px-3 text-body text-text-primary outline-none focus:border-accent-primary focus:ring-[3px] focus:ring-accent-primary/15"
                     />
@@ -171,6 +201,8 @@ export default function Contact() {
                       id="email"
                       name="email"
                       type="email"
+                      value={formValues.email}
+                      onChange={handleFieldChange}
                       required
                       className="mt-1.5 h-11 w-full rounded-lg border border-border bg-surface px-3 text-body text-text-primary outline-none focus:border-accent-primary focus:ring-[3px] focus:ring-accent-primary/15"
                     />
@@ -189,6 +221,8 @@ export default function Contact() {
                       id="phone"
                       name="phone"
                       type="tel"
+                      value={formValues.phone}
+                      onChange={handleFieldChange}
                       required
                       className="mt-1.5 h-11 w-full rounded-lg border border-border bg-surface px-3 text-body text-text-primary outline-none focus:border-accent-primary focus:ring-[3px] focus:ring-accent-primary/15"
                     />
@@ -203,7 +237,8 @@ export default function Contact() {
                     <select
                       id="topic"
                       name="topic"
-                      defaultValue={TOPICS[0]}
+                      value={formValues.topic}
+                      onChange={handleFieldChange}
                       required
                       className="mt-1.5 h-11 w-full rounded-lg border border-border bg-surface px-3 text-body text-text-primary outline-none focus:border-accent-primary focus:ring-[3px] focus:ring-accent-primary/15"
                     >
@@ -227,6 +262,8 @@ export default function Contact() {
                     id="message"
                     name="message"
                     rows={4}
+                    value={formValues.message}
+                    onChange={handleFieldChange}
                     required
                     className="mt-1.5 min-h-32 w-full rounded-lg border border-border bg-surface px-3 py-2.5 text-body text-text-primary outline-none focus:border-accent-primary focus:ring-[3px] focus:ring-accent-primary/15"
                   />
@@ -247,9 +284,9 @@ export default function Contact() {
                   </label>
                 </div>
 
-                {state.error && (
+                {submitError && (
                   <p role="alert" className="text-body-sm text-danger">
-                    {state.error}
+                    {submitError}
                   </p>
                 )}
 
@@ -264,9 +301,9 @@ export default function Contact() {
                 <button
                   type="submit"
                   className="inline-flex cursor-pointer items-center gap-2 rounded-lg bg-accent-primary px-6 py-3 text-body font-medium text-white transition-colors duration-150 ease-out hover:bg-accent-primary-hover disabled:cursor-not-allowed disabled:opacity-50"
-                  disabled={isPending}
+                  disabled={isSubmitting}
                 >
-                  {isPending ? 'Odesílám…' : 'Kontaktujte nás'}
+                  {isSubmitting ? 'Odesílám…' : 'Kontaktujte nás'}
                 </button>
               </form>
             )}
