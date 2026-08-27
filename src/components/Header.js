@@ -63,7 +63,7 @@ export default function Header() {
 
         <button
           type="button"
-          className="inline-flex items-center justify-center rounded-lg border border-border p-2 text-text-primary md:hidden"
+          className="inline-flex cursor-pointer items-center justify-center rounded-lg border border-border p-2 text-text-primary md:hidden"
           aria-expanded={menuOpen}
           aria-controls="mobile-menu"
           onClick={() => setMenuOpen((open) => !open)}

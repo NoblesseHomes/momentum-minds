@@ -221,7 +221,7 @@ export default function Contact() {
 
               <button
                 type="submit"
-                className="inline-flex items-center gap-2 rounded-lg bg-accent-primary px-6 py-3 text-body font-medium text-white transition-colors duration-150 ease-out hover:bg-accent-primary-hover"
+                className="inline-flex cursor-pointer items-center gap-2 rounded-lg bg-accent-primary px-6 py-3 text-body font-medium text-white transition-colors duration-150 ease-out hover:bg-accent-primary-hover"
               >
                 Kontaktujte nás
               </button>
