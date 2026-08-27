@@ -33,9 +33,13 @@ export default function Footer() {
           </nav>
         </div>
 
-        <div className="mt-10 flex flex-col gap-2 border-t border-border pt-6 font-mono text-body-sm text-text-muted sm:flex-row sm:items-center sm:justify-between">
-          <span>Momentum Minds s.r.o. · IČO: 00000000 (doplnit) · Adresa sídla (doplnit)</span>
-          <span>&copy; {new Date().getFullYear()} Momentum Minds s.r.o.</span>
+        <div className="mt-10 flex flex-col gap-2 border-t border-border pt-6 font-mono text-body-sm text-text-muted sm:flex-row sm:items-end sm:justify-between">
+          <div className="space-y-1">
+            <p>MomentumMinds s.r.o. · IČO: 24670804</p>
+            <p>Olšanská 54/3, Žižkov, 130 00 Praha 3</p>
+            <p>Zapsaná v obchodním rejstříku vedeném Městským soudem v Praze pod sp. zn. C 164926</p>
+          </div>
+          <span>&copy; {new Date().getFullYear()} MomentumMinds s.r.o.</span>
         </div>
       </div>
     </footer>
