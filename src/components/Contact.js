@@ -1,10 +1,11 @@
 'use client';
 
-import { useState } from 'react';
+import { useActionState, useRef, useEffect } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import Image from 'next/image';
 import { TbCircleCheck, TbMail, TbMapPin, TbPhone } from 'react-icons/tb';
 import Eyebrow from '@/components/Eyebrow';
+import { sendFeedbackEmail } from '@/app/actions';
 
 const TOPICS = [
   'Recruitment Marketing',
@@ -28,23 +29,18 @@ export default function Contact() {
   const headingReveal = useRevealProps();
   const formReveal = useRevealProps(0.06);
 
-  const [consent, setConsent] = useState(false);
-  const [consentError, setConsentError] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
+  const [state, formAction, isPending] = useActionState(sendFeedbackEmail, {
+    success: false,
+    error: null,
+  });
 
-  // No backend endpoint is wired up yet — this only enforces the GDPR
-  // gate and shows the inline confirmation the design system calls for
-  // (§7.5). Replace with a real submit handler (API route / email
-  // service) before launch.
-  function handleSubmit(event) {
-    event.preventDefault();
-    if (!consent) {
-      setConsentError(true);
-      return;
+  const formRef = useRef(null);
+
+  useEffect(() => {
+    if (state?.success) {
+      formRef.current?.reset();
     }
-    setConsentError(false);
-    setSubmitted(true);
-  }
+  }, [state]);
 
   return (
     <section id="kontakt" className="section-space">
@@ -55,10 +51,11 @@ export default function Contact() {
             Pojďme společně nastavit řešení
           </h2>
           <p className="mt-3 text-body-lg text-text-secondary lg:text-body-lg-desktop">
-            Potřebujete zvýšit dosah svých pracovních nabídek? Hledáte partnera, který
-            kromě marketingu zajistí i navazující organizační a logistickou podporu? Nebo
-            potřebujete externě realizovat část výrobní zakázky přímo ve vašem provozu?
-            Řekněte nám, co potřebujete — společně nastavíme řešení podle vašeho projektu.
+            Potřebujete zvýšit dosah svých pracovních nabídek? Hledáte partnera,
+            který kromě marketingu zajistí i navazující organizační a
+            logistickou podporu? Nebo potřebujete externě realizovat část
+            výrobní zakázky přímo ve vašem provozu? Řekněte nám, co potřebujete
+            — společně nastavíme řešení podle vašeho projektu.
           </p>
         </motion.div>
 
@@ -74,13 +71,17 @@ export default function Contact() {
                 width={1400}
                 height={1600}
                 sizes="(min-width: 1024px) 40vw, 100vw"
-                className="h-56 w-full object-cover grayscale-[35%] contrast-[1.05] sm:h-72"
+                className="h-56 w-full object-cover grayscale-35 contrast-[1.05] sm:h-72"
               />
             </div>
 
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
-                <TbMapPin size={20} className="mt-0.5 shrink-0 text-accent-primary" aria-hidden="true" />
+                <TbMapPin
+                  size={20}
+                  className="mt-0.5 shrink-0 text-accent-primary"
+                  aria-hidden="true"
+                />
                 <span className="text-body text-text-secondary lg:text-body-desktop">
                   MomentumMinds s.r.o.
                   <br />
@@ -90,7 +91,11 @@ export default function Contact() {
                 </span>
               </li>
               <li className="flex items-start gap-3">
-                <TbMail size={20} className="mt-0.5 shrink-0 text-accent-primary" aria-hidden="true" />
+                <TbMail
+                  size={20}
+                  className="mt-0.5 shrink-0 text-accent-primary"
+                  aria-hidden="true"
+                />
                 <a
                   href="mailto:info@momentumminds.cz"
                   className="text-body text-text-secondary underline-offset-4 hover:text-accent-primary hover:underline lg:text-body-desktop"
@@ -99,7 +104,11 @@ export default function Contact() {
                 </a>
               </li>
               <li className="flex items-start gap-3">
-                <TbPhone size={20} className="mt-0.5 shrink-0 text-accent-primary" aria-hidden="true" />
+                <TbPhone
+                  size={20}
+                  className="mt-0.5 shrink-0 text-accent-primary"
+                  aria-hidden="true"
+                />
                 <a
                   href="tel:+420000000000"
                   className="text-body text-text-secondary underline-offset-4 hover:text-accent-primary hover:underline lg:text-body-desktop"
@@ -116,18 +125,25 @@ export default function Contact() {
             </ul>
           </div>
 
-          {submitted ? (
+          {state.success ? (
             <div className="flex items-start gap-3 rounded-2xl border border-accent-primary/30 bg-accent-primary/5 p-6">
-              <TbCircleCheck size={22} className="mt-0.5 shrink-0 text-accent-primary" aria-hidden="true" />
+              <TbCircleCheck
+                size={22}
+                className="mt-0.5 shrink-0 text-accent-primary"
+                aria-hidden="true"
+              />
               <p className="text-body text-text-primary lg:text-body-desktop">
                 Zpráva odeslána. Ozveme se vám co nejdříve.
               </p>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} noValidate className="space-y-5">
+            <form ref={formRef} action={formAction} className="space-y-5">
               <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
                 <div>
-                  <label htmlFor="name" className="text-body-sm font-medium text-text-secondary">
+                  <label
+                    htmlFor="name"
+                    className="text-body-sm font-medium text-text-secondary"
+                  >
                     Jméno a příjmení
                   </label>
                   <input
@@ -139,7 +155,10 @@ export default function Contact() {
                   />
                 </div>
                 <div>
-                  <label htmlFor="email" className="text-body-sm font-medium text-text-secondary">
+                  <label
+                    htmlFor="email"
+                    className="text-body-sm font-medium text-text-secondary"
+                  >
                     Email
                   </label>
                   <input
@@ -154,24 +173,32 @@ export default function Contact() {
 
               <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
                 <div>
-                  <label htmlFor="phone" className="text-body-sm font-medium text-text-secondary">
-                    Telefon <span className="text-text-muted">(nepovinné)</span>
+                  <label
+                    htmlFor="phone"
+                    className="text-body-sm font-medium text-text-secondary"
+                  >
+                    Telefon
                   </label>
                   <input
                     id="phone"
                     name="phone"
                     type="tel"
+                    required
                     className="mt-1.5 h-11 w-full rounded-lg border border-border bg-surface px-3 text-body text-text-primary outline-none focus:border-accent-primary focus:ring-[3px] focus:ring-accent-primary/15"
                   />
                 </div>
                 <div>
-                  <label htmlFor="topic" className="text-body-sm font-medium text-text-secondary">
+                  <label
+                    htmlFor="topic"
+                    className="text-body-sm font-medium text-text-secondary"
+                  >
                     Mám zájem o
                   </label>
                   <select
                     id="topic"
                     name="topic"
                     defaultValue={TOPICS[0]}
+                    required
                     className="mt-1.5 h-11 w-full rounded-lg border border-border bg-surface px-3 text-body text-text-primary outline-none focus:border-accent-primary focus:ring-[3px] focus:ring-accent-primary/15"
                   >
                     {TOPICS.map((topic) => (
@@ -184,7 +211,10 @@ export default function Contact() {
               </div>
 
               <div>
-                <label htmlFor="message" className="text-body-sm font-medium text-text-secondary">
+                <label
+                  htmlFor="message"
+                  className="text-body-sm font-medium text-text-secondary"
+                >
                   Zpráva
                 </label>
                 <textarea
@@ -201,31 +231,28 @@ export default function Contact() {
                   <input
                     type="checkbox"
                     name="consent"
-                    checked={consent}
-                    onChange={(event) => {
-                      setConsent(event.target.checked);
-                      if (event.target.checked) setConsentError(false);
-                    }}
-                    aria-describedby={consentError ? 'consent-error' : undefined}
-                    aria-invalid={consentError}
+                    required
                     className="mt-0.5 h-4 w-4 shrink-0 rounded border-border text-accent-primary focus:ring-[3px] focus:ring-accent-primary/15"
                   />
                   <span className="text-body-sm text-text-secondary">
-                    Souhlasím se zpracováním osobních údajů za účelem vyřízení mého dotazu.
+                    Souhlasím se zpracováním osobních údajů za účelem vyřízení
+                    mého dotazu.
                   </span>
                 </label>
-                {consentError && (
-                  <p id="consent-error" role="alert" className="mt-1.5 text-body-sm text-danger">
-                    Pro odeslání formuláře je nutný souhlas se zpracováním osobních údajů.
-                  </p>
-                )}
               </div>
+
+              {state.error && (
+                <p role="alert" className="text-body-sm text-danger">
+                  {state.error}
+                </p>
+              )}
 
               <button
                 type="submit"
-                className="inline-flex cursor-pointer items-center gap-2 rounded-lg bg-accent-primary px-6 py-3 text-body font-medium text-white transition-colors duration-150 ease-out hover:bg-accent-primary-hover"
+                className="inline-flex cursor-pointer items-center gap-2 rounded-lg bg-accent-primary px-6 py-3 text-body font-medium text-white transition-colors duration-150 ease-out hover:bg-accent-primary-hover disabled:cursor-not-allowed disabled:opacity-50"
+                disabled={isPending}
               >
-                Kontaktujte nás
+                {isPending ? 'Odesílám…' : 'Kontaktujte nás'}
               </button>
             </form>
           )}
