@@ -72,6 +72,40 @@ function buildFeedbackEmailHtml({ name, email, phone, topic, message }) {
   `;
 }
 
+// Claudflare
+async function verifyTurnstile(token) {
+  if (!token) {
+    return false;
+  }
+
+  try {
+    const response = await fetch(
+      'https://challenges.cloudflare.com/turnstile/v0/siteverify',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          secret: process.env.TURNSTILE_SECRET_KEY,
+          response: token,
+        }),
+      }
+    );
+
+    if (!response.ok) {
+      return false;
+    }
+
+    const result = await response.json();
+
+    return result.success === true;
+  } catch (error) {
+    console.error('Turnstile verification error:', error);
+    return false;
+  }
+}
+
 export async function sendFeedbackEmail(previousState, formData) {
   const name = formData.get('name')?.toString().trim();
   const email = formData.get('email')?.toString().trim();
@@ -90,6 +124,17 @@ export async function sendFeedbackEmail(previousState, formData) {
   const missingField = requiredFields.find((field) => !field.value);
   if (missingField) {
     return { success: false, error: missingField.error };
+  }
+
+  const turnstileToken = formData.get('cf-turnstile-response')?.toString();
+
+  const turnstileValid = await verifyTurnstile(turnstileToken);
+
+  if (!turnstileValid) {
+    return {
+      success: false,
+      error: 'Turnstile verification failed',
+    };
   }
 
   const guestToken = cookieStore.get('guest_token') ?? null;
