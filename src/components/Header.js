@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
 import { FiArrowRight, FiMenu, FiX } from 'react-icons/fi';
 
 // concept v3 — the "partner offers" section stays undecided (docs §9),
@@ -31,11 +32,15 @@ export default function Header() {
       }`}
     >
       <div className="container-page flex h-16 items-center justify-between">
-        <a
-          href="#"
-          className="font-display text-lg font-semibold tracking-tight text-black"
-        >
-          Momentum Minds
+        <a href="#" className="flex items-center">
+          <Image
+            src="/logo.svg"
+            alt="Momentum Minds"
+            width={171}
+            height={47}
+            priority
+            className="h-8 w-auto sm:h-9 md:h-10 lg:h-11"
+          />
         </a>
 
         <nav
