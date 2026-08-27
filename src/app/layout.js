@@ -4,6 +4,7 @@ import './globals.css';
 import { cookies } from 'next/headers';
 import CookieBanner from '@/components/CookieBanner';
 import AnalyticsScripts from '@/components/AnalyticsScripts';
+import OrganizationJsonLd from '@/components/OrganizationJsonLd';
 
 const archivo = Archivo({
   variable: '--font-archivo',
@@ -93,6 +94,7 @@ export default async function RootLayout({ children }) {
     >
       <head>
         <meta name="apple-mobile-web-app-title" content="Momentum" />
+        <OrganizationJsonLd siteUrl={siteUrl} />
       </head>
       <body className="min-h-full flex flex-col">
         <Header />
