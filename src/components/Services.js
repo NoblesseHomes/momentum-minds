@@ -10,6 +10,7 @@ import {
   TbSpeakerphone,
   TbUserCheck,
 } from 'react-icons/tb';
+import Eyebrow from '@/components/Eyebrow';
 
 // design-system §6: fade + translateY(8px), 400ms, once per element,
 // disabled entirely under prefers-reduced-motion.
@@ -28,7 +29,7 @@ function useRevealProps(delay = 0) {
   };
 }
 
-// concept v3 §4.1 — Marketing a reklama (main direction)
+// concept v3 §4.1 — Marketing & Advertising (main direction)
 const MARKETING_ADVERTISING = [
   'Vytváření a úprava pracovních nabídek',
   'Propagace pracovních nabídek',
@@ -41,7 +42,7 @@ const MARKETING_ADVERTISING = [
   'Dlouhodobá marketingová podpora náboru',
 ];
 
-// concept v3 §4.2 — Obchodní podpora (renamed from "Workforce Support")
+// concept v3 §4.2 — Business Support (renamed from "Workforce Support")
 const BUSINESS_SUPPORT = [
   'Organizační komunikace',
   'Koordinace příjezdu lidí',
@@ -54,7 +55,7 @@ const BUSINESS_SUPPORT = [
   'Další doplňkové služby na vyžádání klienta',
 ];
 
-// concept v2 §3.2 — Zpracování kovů a montáž
+// concept v2 §3.2 — Metalworking & Assembly
 const INDUSTRIAL_WORK = [
   'Zpracování kovu',
   'Zámečnické práce',
@@ -179,7 +180,8 @@ export default function Services() {
     <section id="sluzby" className="section-space">
       <div className="container-page">
         <motion.div {...headingReveal} className="max-w-2xl">
-          <h2 className="text-h2 font-display font-bold text-text-primary lg:text-h2-desktop">
+          <Eyebrow>What we offer</Eyebrow>
+          <h2 className="mt-2 text-h2 font-display font-bold text-text-primary lg:text-h2-desktop">
             Co nabízíme
           </h2>
           <p className="mt-3 text-body-lg text-text-secondary lg:text-body-lg-desktop">
@@ -188,15 +190,15 @@ export default function Services() {
           </p>
         </motion.div>
 
-        {/* Block 1 — Marketing a reklama + Obchodní podpora (concept v3
+        {/* Block 1 — Marketing & Advertising + Business Support (concept v3
             §7.3 treats these as one combined "direction 1" block) */}
         <div className="mt-16 border-t border-border pt-16">
           <motion.div {...blockOneReveal}>
             <DirectionBanner
               index="01"
               Icon={TbSpeakerphone}
-              title="Marketing a reklama"
-              intro="Reklama, marketing a propagace pracovních nabídek — hlavně pro agentury práce, personální společnosti a zaměstnavatele s pravidelnou potřebou náboru. Obchodní podpora tento směr doplňuje o organizační zajištění."
+              title="Marketing & Advertising"
+              intro="Reklama, marketing a propagace pracovních nabídek — hlavně pro agentury práce, personální společnosti a zaměstnavatele s pravidelnou potřebou náboru. Business Support tento směr doplňuje o organizační zajištění."
               src="/images/services/recruitment.jpg"
               alt="Dva kolegové procházejí uličkou skladu a konzultují průběh práce"
             />
@@ -205,14 +207,14 @@ export default function Services() {
           <motion.div {...blockOneMediaReveal} className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2">
             <ServiceColumn
               Icon={TbSpeakerphone}
-              title="Marketing a reklama"
+              title="Marketing & Advertising"
               items={MARKETING_ADVERTISING}
               src="/images/services/promote.jpg"
               alt="Tým plánuje náborovou kampaň u tabule s poznámkami"
             />
             <ServiceColumn
               Icon={TbUserCheck}
-              title="Obchodní podpora"
+              title="Business Support"
               items={BUSINESS_SUPPORT}
               src="/images/services/support.jpg"
               alt="Administrativní podpis dokumentu na pracovním stole"
@@ -248,13 +250,13 @@ export default function Services() {
           </motion.p>
         </div>
 
-        {/* Block 2 — Zpracování kovů a montáž */}
+        {/* Block 2 — Metalworking & Assembly */}
         <div className="mt-16 border-t border-border pt-16">
           <motion.div {...blockTwoReveal}>
             <DirectionBanner
               index="02"
               Icon={TbBuildingFactory2}
-              title="Zpracování kovů a montáž"
+              title="Metalworking & Assembly"
               intro="Převzetí přesně vymezené části zakázky nebo výrobního procesu klienta a její realizace přímo na místě u zákazníka. Nemáme vlastní výrobní halu."
               src="/images/services/industrial.jpg"
               alt="Jiskry od úhlové brusky při opracování kovu v průmyslovém provozu"

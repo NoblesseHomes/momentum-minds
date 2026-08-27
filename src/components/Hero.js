@@ -51,19 +51,19 @@ export default function Hero() {
 
       <div className="container-page relative z-10 py-24">
         <div className="max-w-2xl">
-          {/* concept v3 §7.2 brand line, translated to Czech — the
-              bilingual EN/CZ convention from §6 was dropped per explicit
-              request; the whole site now reads in Czech only. */}
+          {/* concept v3 §7.2 — fixed brand line, English by design
+              convention (§6): section mottos stay EN, explanatory copy CZ. */}
           <h1 className="mm-rise text-h1 font-display font-bold text-white lg:text-h1-desktop">
-            Nápady, které vytvářejí dynamiku. Řešení, která přinášejí výsledky.
+            Ideas that create momentum. Solutions that deliver results.
           </h1>
 
           <p
             className="mm-rise mt-4 text-body-lg text-white/85 lg:text-body-lg-desktop"
             style={{ animationDelay: '80ms' }}
           >
-            Momentum Minds spojuje marketing náboru s navazující organizační
-            podporou a průmyslové služby v oblasti zpracování kovů.
+            Momentum Minds spojuje recruitment marketing s navazující
+            organizační podporou a průmyslové služby v oblasti zpracování
+            kovů.
           </p>
 
           <div className="mm-rise mt-8" style={{ animationDelay: '160ms' }}>

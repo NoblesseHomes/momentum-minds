@@ -9,6 +9,8 @@ import {
   TbRefresh,
   TbUsersGroup,
 } from 'react-icons/tb';
+import Eyebrow from '@/components/Eyebrow';
+
 // concept v3 §5 — five differentiators, presented as a trust block
 // (short pitch, not new information) next to a single large photo.
 const REASONS = [
@@ -59,7 +61,8 @@ export default function WhyUs() {
     <section id="proc-my" className="section-space border-t border-border bg-surface">
       <div className="container-page">
         <motion.div {...headingReveal} className="max-w-2xl">
-          <h2 className="text-h2 font-display font-bold text-text-primary lg:text-h2-desktop">
+          <Eyebrow>Why Momentum Minds</Eyebrow>
+          <h2 className="mt-2 text-h2 font-display font-bold text-text-primary lg:text-h2-desktop">
             Proč Momentum Minds
           </h2>
         </motion.div>

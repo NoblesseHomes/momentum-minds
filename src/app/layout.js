@@ -23,10 +23,9 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata = {
-  title:
-    'Momentum Minds — Nápady, které vytvářejí dynamiku. Řešení, která přinášejí výsledky.',
+  title: 'Momentum Minds — Ideas that create momentum. Solutions that deliver results.',
   description:
-    'Momentum Minds spojuje marketing náboru s navazující organizační podporou a průmyslové služby v oblasti zpracování kovů.',
+    'Momentum Minds spojuje recruitment marketing s navazující organizační podporou a průmyslové služby v oblasti zpracování kovů.',
 };
 
 export default function RootLayout({ children }) {

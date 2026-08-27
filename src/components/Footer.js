@@ -13,10 +13,9 @@ export default function Footer() {
             <span className="font-display text-lg font-semibold tracking-tight text-text-primary">
               Momentum Minds
             </span>
-            {/* concept v3 §7.7 — direction list, translated to Czech
-                (the doc's exact EN wording was dropped, see Services.js) */}
+            {/* concept v3 §7.7 — direction list, exact wording */}
             <p className="mt-2 max-w-xs font-mono text-body-sm text-text-secondary">
-              Marketing a reklama | Obchodní podpora | Zpracování kovů a montáž
+              Recruitment Marketing &amp; Advertising | Business Support | Metalworking &amp; Assembly
             </p>
           </div>
 

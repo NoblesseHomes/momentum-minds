@@ -7,27 +7,27 @@ import { TbBriefcase2, TbRocket, TbTools } from 'react-icons/tb';
 // concept v3 §3 — Promote / Support / Deliver: not a third business line,
 // just the framework that explains how the two real directions work.
 // Placed as a compact strip right under hero, before the detailed
-// services blocks (§10, step 3 of the page order). Rendered fully in
-// Czech — the original framework's English words are translated rather
-// than kept as loanwords, per explicit request to drop all English copy.
+// services blocks (§10, step 3 of the page order). Kept as the English
+// framework words per the bilingual convention (§6) — short EN labels,
+// Czech explanatory copy underneath.
 const ITEMS = [
   {
     Icon: TbRocket,
-    word: 'Propagace',
+    word: 'Promote',
     src: '/images/services/promote.jpg',
     alt: 'Tým plánuje náborovou kampaň u tabule s poznámkami',
     text: 'Dáváme pracovním nabídkám viditelnost a cílíme je přesně na správnou skupinu.',
   },
   {
     Icon: TbBriefcase2,
-    word: 'Podpora',
+    word: 'Support',
     src: '/images/services/support.jpg',
     alt: 'Administrativní podpis dokumentu na pracovním stole',
     text: 'Zajišťujeme organizační, logistickou a administrativní podporu kolem nástupu.',
   },
   {
     Icon: TbTools,
-    word: 'Realizace',
+    word: 'Deliver',
     src: '/images/services/industrial.jpg',
     alt: 'Jiskry od úhlové brusky při opracování kovu',
     text: 'Přebíráme vymezenou část výrobní zakázky a odpovídáme za její realizaci.',
