@@ -1,7 +1,5 @@
 import { Archivo, Inter, JetBrains_Mono } from 'next/font/google';
 import Header from '@/components/Header';
-import CookieConsent from '@/components/CookieConsent';
-import GoogleAnalytics from '@/components/GoogleAnalytics';
 import './globals.css';
 
 const archivo = Archivo({
@@ -37,8 +35,6 @@ export default function RootLayout({ children }) {
       <body className="min-h-full flex flex-col">
         <Header />
         {children}
-        <CookieConsent />
-        <GoogleAnalytics />
       </body>
     </html>
   );
