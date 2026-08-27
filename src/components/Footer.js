@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 const NAV_ITEMS = [
   { href: '#sluzby', label: 'Co nabízíme' },
@@ -43,6 +44,12 @@ export default function Footer() {
                 {item.label}
               </a>
             ))}
+            <Link
+              href="/ochrana-osobnich-udaju"
+              className="text-body-sm text-text-secondary transition-colors duration-150 ease-out hover:text-accent-primary"
+            >
+              Ochrana osobních údajů
+            </Link>
           </nav>
         </div>
 

@@ -1,6 +1,7 @@
 'use client';
 
 import Script from 'next/script';
+import Link from 'next/link';
 import { useState } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import Image from 'next/image';
@@ -278,8 +279,14 @@ export default function Contact() {
                       className="mt-0.5 h-4 w-4 shrink-0 rounded border-border text-accent-primary focus:ring-[3px] focus:ring-accent-primary/15"
                     />
                     <span className="text-body-sm text-text-secondary">
-                      Souhlasím se zpracováním osobních údajů za účelem vyřízení
-                      mého dotazu.
+                      Souhlasím se{' '}
+                      <Link
+                        href="/ochrana-osobnich-udaju"
+                        className="text-accent-primary hover:underline"
+                      >
+                        zpracováním osobních údajů
+                      </Link>{' '}
+                      za účelem vyřízení mého dotazu.
                     </span>
                   </label>
                 </div>

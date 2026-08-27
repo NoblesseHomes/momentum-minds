@@ -3,6 +3,7 @@
 'use client';
 
 import { useTransition } from 'react';
+import Link from 'next/link';
 import { TbCookie } from 'react-icons/tb';
 import { saveCookieConsent } from '@/app/actions';
 
@@ -33,7 +34,11 @@ export default function CookieBanner() {
 
       <p className="mt-2 text-body-sm text-text-secondary lg:text-body-sm-desktop">
         Používáme Google Analytics k měření návštěvnosti a zlepšování fungování
-        webu. Souhlasíte s použitím analytických cookies?
+        webu. Souhlasíte s použitím analytických cookies? Více v{' '}
+        <Link href="/ochrana-osobnich-udaju" className="text-accent-primary hover:underline">
+          zásadách ochrany osobních údajů
+        </Link>
+        .
       </p>
 
       <div className="mt-4 flex justify-end gap-3">
