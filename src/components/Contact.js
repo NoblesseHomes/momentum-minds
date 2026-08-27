@@ -187,7 +187,7 @@ export default function Contact() {
                       value={formValues.name}
                       onChange={handleFieldChange}
                       required
-                      className="mt-1.5 h-11 w-full rounded-lg border border-border bg-surface px-3 text-body text-text-primary outline-none focus:border-accent-primary focus:ring-[3px] focus:ring-accent-primary/15"
+                      className="mt-1.5 h-11 w-full rounded-lg border border-border bg-surface px-3 text-base text-text-primary outline-none focus:border-accent-primary focus:ring-[3px] focus:ring-accent-primary/15"
                     />
                   </div>
                   <div>
@@ -204,7 +204,7 @@ export default function Contact() {
                       value={formValues.email}
                       onChange={handleFieldChange}
                       required
-                      className="mt-1.5 h-11 w-full rounded-lg border border-border bg-surface px-3 text-body text-text-primary outline-none focus:border-accent-primary focus:ring-[3px] focus:ring-accent-primary/15"
+                      className="mt-1.5 h-11 w-full rounded-lg border border-border bg-surface px-3 text-base text-text-primary outline-none focus:border-accent-primary focus:ring-[3px] focus:ring-accent-primary/15"
                     />
                   </div>
                 </div>
@@ -224,7 +224,7 @@ export default function Contact() {
                       value={formValues.phone}
                       onChange={handleFieldChange}
                       required
-                      className="mt-1.5 h-11 w-full rounded-lg border border-border bg-surface px-3 text-body text-text-primary outline-none focus:border-accent-primary focus:ring-[3px] focus:ring-accent-primary/15"
+                      className="mt-1.5 h-11 w-full rounded-lg border border-border bg-surface px-3 text-base text-text-primary outline-none focus:border-accent-primary focus:ring-[3px] focus:ring-accent-primary/15"
                     />
                   </div>
                   <div>
@@ -240,7 +240,7 @@ export default function Contact() {
                       value={formValues.topic}
                       onChange={handleFieldChange}
                       required
-                      className="mt-1.5 h-11 w-full rounded-lg border border-border bg-surface px-3 text-body text-text-primary outline-none focus:border-accent-primary focus:ring-[3px] focus:ring-accent-primary/15"
+                      className="mt-1.5 h-11 w-full rounded-lg border border-border bg-surface px-3 text-base text-text-primary outline-none focus:border-accent-primary focus:ring-[3px] focus:ring-accent-primary/15"
                     >
                       {TOPICS.map((topic) => (
                         <option key={topic} value={topic}>
@@ -265,7 +265,7 @@ export default function Contact() {
                     value={formValues.message}
                     onChange={handleFieldChange}
                     required
-                    className="mt-1.5 min-h-32 w-full rounded-lg border border-border bg-surface px-3 py-2.5 text-body text-text-primary outline-none focus:border-accent-primary focus:ring-[3px] focus:ring-accent-primary/15"
+                    className="mt-1.5 min-h-32 w-full rounded-lg border border-border bg-surface px-3 py-2.5 text-base text-text-primary outline-none focus:border-accent-primary focus:ring-[3px] focus:ring-accent-primary/15"
                   />
                 </div>
 
