@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 :root {
   /* Base surfaces */
@@ -104,6 +104,10 @@
   --text-tag-desktop: 0.75rem; /* 12px */
   --text-tag-desktop--line-height: 1.4;
   --text-tag-desktop--letter-spacing: 0.02em;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {

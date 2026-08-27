@@ -74,9 +74,6 @@ export default function Contact() {
                 sizes="(min-width: 1024px) 40vw, 100vw"
                 className="h-56 w-full object-cover grayscale-[35%] contrast-[1.05] sm:h-72"
               />
-              <span className="absolute left-3 top-3 rounded-[1.25rem] bg-text-primary/70 px-2.5 py-1 font-mono text-tag uppercase tracking-wide text-white backdrop-blur-sm">
-                Ilustrační foto
-              </span>
             </div>
 
             <ul className="space-y-4">
