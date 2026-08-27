@@ -52,15 +52,15 @@ export default function Hero() {
       <div className="container-page relative z-10 py-24">
         <div className="max-w-2xl">
           <h1 className="mm-rise text-h1 font-display font-bold text-white lg:text-h1-desktop">
-            Momentum Minds — komplexní služby pro firmy i jednotlivce
+            Momentum Minds — Jeden partner. Více možností.
           </h1>
 
           <p
             className="mm-rise mt-4 text-body-lg text-white/85 lg:text-body-lg-desktop"
             style={{ animationDelay: '80ms' }}
           >
-            Propojujeme různé obory, abychom vám nabídli jednoduchá a spolehlivá
-            řešení.
+            Recruitment marketing, podpora náboru a průmyslové služby — jeden
+            spolehlivý partner pro vaše procesy.
           </p>
 
           <div className="mm-rise mt-8" style={{ animationDelay: '160ms' }}>

@@ -31,7 +31,9 @@
   --duration-reveal: 400ms; /* scroll-reveal fade+translateY */
 
   /* Layout */
-  --container-max: 75rem; /* 1200px */
+  --container-max: 90rem; /* 1440px — widened from the design-system's
+     1200px baseline (not a "ЗАФИКСИРОВАНО" value) so dense two-column
+     content (Services) has room to breathe on large screens. */
 }
 
 @theme inline {
