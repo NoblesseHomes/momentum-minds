@@ -41,6 +41,9 @@ export default async function RootLayout({ children }) {
       lang="cs"
       className={`${archivo.variable} ${inter.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
+      <head>
+        <meta name="apple-mobile-web-app-title" content="Momentum" />
+      </head>
       <body className="min-h-full flex flex-col">
         <Header />
         {children}
