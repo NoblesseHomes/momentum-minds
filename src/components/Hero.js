@@ -39,7 +39,7 @@ export default function Hero() {
         playsInline
         aria-hidden="true"
       >
-        <source src="/hero_video.mp4" type="video/mp4" />
+        <source src="/momentum_hero.mp4" type="video/mp4" />
       </video>
 
       {/* Dark gradient for AA text contrast over the video — heavier on
@@ -51,16 +51,19 @@ export default function Hero() {
 
       <div className="container-page relative z-10 py-24">
         <div className="max-w-2xl">
+          {/* concept v3 §7.2 brand line, translated to Czech — the
+              bilingual EN/CZ convention from §6 was dropped per explicit
+              request; the whole site now reads in Czech only. */}
           <h1 className="mm-rise text-h1 font-display font-bold text-white lg:text-h1-desktop">
-            Momentum Minds — Jeden partner. Více možností.
+            Nápady, které vytvářejí dynamiku. Řešení, která přinášejí výsledky.
           </h1>
 
           <p
             className="mm-rise mt-4 text-body-lg text-white/85 lg:text-body-lg-desktop"
             style={{ animationDelay: '80ms' }}
           >
-            Recruitment marketing, podpora náboru a průmyslové služby — jeden
-            spolehlivý partner pro vaše procesy.
+            Momentum Minds spojuje marketing náboru s navazující organizační
+            podporou a průmyslové služby v oblasti zpracování kovů.
           </p>
 
           <div className="mm-rise mt-8" style={{ animationDelay: '160ms' }}>

@@ -5,6 +5,7 @@ import Image from 'next/image';
 import {
   TbBuildingFactory2,
   TbCheck,
+  TbInfoCircle,
   TbMapPin,
   TbSpeakerphone,
   TbUserCheck,
@@ -27,30 +28,30 @@ function useRevealProps(delay = 0) {
   };
 }
 
-// concept v2 §3.1 — Recruitment Marketing
-const RECRUITMENT_MARKETING = [
+// concept v3 §4.1 — Marketing & Advertising (main direction)
+const MARKETING_ADVERTISING = [
   'Vytváření a úprava pracovních nabídek',
   'Propagace pracovních nabídek',
   'Příprava náborových kampaní',
   'Reklamní texty a obsah',
   'Grafické a promo materiály',
-  'Online marketing pracovních pozic',
+  'Online marketing a distribuce obsahu',
   'Cílení podle profese, lokality a cílové skupiny',
   'HR marketing',
   'Dlouhodobá marketingová podpora náboru',
 ];
 
-// concept v2 §3.1 — Workforce Support
-const WORKFORCE_SUPPORT = [
-  'Organizační podpora při náboru',
-  'Komunikace a koordinace kandidátů',
-  'Pomoc s organizací příjezdu pracovníků',
-  'Koordinace dopravy',
-  'Pomoc se zajištěním ubytování',
-  'Organizace vstupních a dalších potřebných školení',
-  'Administrativní podpora spojená s nástupem do práce',
-  'Překladatelská a tlumočnická podpora',
-  'Koordinace dalších procesů spojených s nástupem zaměstnanců',
+// concept v3 §4.2 — Business Support (renamed from "Workforce Support")
+const BUSINESS_SUPPORT = [
+  'Organizační komunikace',
+  'Koordinace příjezdu lidí',
+  'Doprava',
+  'Pomoc s organizací a koordinací ubytování',
+  'Organizace školení',
+  'Administrativní podpora',
+  'Překladatelské a tlumočnické služby',
+  'Organizační podpora adaptačních procesů',
+  'Další doplňkové služby na vyžádání klienta',
 ];
 
 // concept v2 §3.2 — Industrial Services & Metalworking
@@ -152,18 +153,19 @@ export default function Services() {
             Co nabízíme
           </h2>
           <p className="mt-3 text-body-lg text-text-secondary lg:text-body-lg-desktop">
-            Dvě samostatná řešení, jeden přístup: přebíráme přesně vymezenou část vašeho
+            Dva samostatné směry, jeden přístup: přebíráme přesně vymezenou část vašeho
             procesu a plníme ji jako spolehlivý, vestavěný partner.
           </p>
         </motion.div>
 
-        {/* Block 1 — Recruitment Marketing & Workforce Support */}
+        {/* Block 1 — Marketing & Advertising + Business Support (concept v3
+            §7.3 treats these as one combined "direction 1" block) */}
         <motion.div {...blockOneReveal} className="mt-16 grid grid-cols-1 gap-8 border-t border-border pt-16 lg:grid-cols-[280px_1fr] lg:gap-16">
           <DirectionHeader
             index="01"
             Icon={TbSpeakerphone}
-            title="Recruitment Marketing and Workforce Support"
-            intro="Marketing náboru a organizační podpora nástupu zaměstnanců do práce — pro agentury práce, personální společnosti a zaměstnavatele s pravidelnou potřebou náboru."
+            title="Marketing a reklama"
+            intro="Reklama, marketing a propagace pracovních nabídek — hlavně pro agentury práce, personální společnosti a zaměstnavatele s pravidelnou potřebou náboru. Obchodní podpora tento směr doplňuje o organizační zajištění."
           />
 
           <div>
@@ -177,11 +179,11 @@ export default function Services() {
                 <div className="flex items-center gap-2">
                   <TbSpeakerphone size={18} className="text-accent-primary" aria-hidden="true" />
                   <h4 className="font-display text-base font-semibold text-text-primary">
-                    Recruitment Marketing
+                    Marketing a reklama
                   </h4>
                 </div>
                 <div className="mt-4">
-                  <CompactList items={RECRUITMENT_MARKETING} />
+                  <CompactList items={MARKETING_ADVERTISING} />
                 </div>
               </div>
 
@@ -189,11 +191,11 @@ export default function Services() {
                 <div className="flex items-center gap-2">
                   <TbUserCheck size={18} className="text-accent-primary" aria-hidden="true" />
                   <h4 className="font-display text-base font-semibold text-text-primary">
-                    Workforce Support
+                    Obchodní podpora
                   </h4>
                 </div>
                 <div className="mt-4">
-                  <CompactList items={WORKFORCE_SUPPORT} />
+                  <CompactList items={BUSINESS_SUPPORT} />
                 </div>
               </div>
             </div>
@@ -201,20 +203,33 @@ export default function Services() {
             <p className="mt-4 flex items-start gap-2.5 rounded-lg bg-accent-primary/5 px-4 py-3 text-body-sm text-text-secondary lg:text-body-sm-desktop">
               <TbCheck size={16} className="mt-0.5 shrink-0 text-accent-primary" aria-hidden="true" />
               <span>
-                <strong className="font-medium text-text-primary">Pro agentury práce:</strong>{' '}
-                rozsah spolupráce si zvolíte sami — pouze reklama a propagace, nebo reklama +
-                podpora náboru + koordinace souvisejících služeb.
+                <strong className="font-medium text-text-primary">
+                  Vy řídíte nábor. My zajišťujeme podporu kolem něj.
+                </strong>{' '}
+                Rozsah spolupráce si zvolíte sami — pouze reklama a propagace, nebo reklama +
+                organizační, logistická a administrativní podpora.
+              </span>
+            </p>
+
+            {/* concept v3 §1 — required legal scope clarification, must be
+                visible, not fine print. */}
+            <p className="mt-4 flex items-start gap-2.5 rounded-lg border border-border px-4 py-3 text-body-sm text-text-secondary lg:text-body-sm-desktop">
+              <TbInfoCircle size={16} className="mt-0.5 shrink-0 text-text-muted" aria-hidden="true" />
+              <span>
+                Momentum Minds není personální agentura a nezajišťuje zprostředkování
+                zaměstnání. Samotný výběr kandidátů a pracovněprávní vztahy zůstávají
+                plně v kompetenci klienta.
               </span>
             </p>
           </div>
         </motion.div>
 
-        {/* Block 2 — Industrial Services & Metalworking */}
+        {/* Block 2 — Metalworking & Assembly */}
         <motion.div {...blockTwoReveal} className="mt-16 grid grid-cols-1 gap-8 border-t border-border pt-16 lg:grid-cols-[280px_1fr] lg:gap-16">
           <DirectionHeader
             index="02"
             Icon={TbBuildingFactory2}
-            title="Industrial Services and Metalworking"
+            title="Zpracování kovů a montáž"
             intro="Převzetí přesně vymezené části zakázky nebo výrobního procesu klienta a její realizace přímo na místě u zákazníka. Nemáme vlastní výrobní halu."
           />
 

@@ -21,9 +21,10 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata = {
-  title: 'Momentum Minds — komplexní služby pro firmy i jednotlivce',
+  title:
+    'Momentum Minds — Nápady, které vytvářejí dynamiku. Řešení, která přinášejí výsledky.',
   description:
-    'Propojujeme různé obory, abychom vám nabídli jednoduchá a spolehlivá řešení.',
+    'Momentum Minds spojuje marketing náboru s navazující organizační podporou a průmyslové služby v oblasti zpracování kovů.',
 };
 
 export default function RootLayout({ children }) {

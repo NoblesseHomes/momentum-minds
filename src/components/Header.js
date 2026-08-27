@@ -3,9 +3,11 @@
 import { useEffect, useState } from 'react';
 import { FiArrowRight, FiMenu, FiX } from 'react-icons/fi';
 
+// concept v3 — the "partner offers" section stays undecided (docs §9),
+// so it isn't built yet and has no nav entry.
 const NAV_ITEMS = [
   { href: '#sluzby', label: 'Co nabízíme' },
-  { href: '#partneri', label: 'Partneři' },
+  { href: '#proc-my', label: 'Proč my' },
   { href: '#kontakt', label: 'Kontakty' },
 ];
 
