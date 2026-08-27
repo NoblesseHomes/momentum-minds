@@ -47,6 +47,13 @@ export const metadata = {
   },
   alternates: {
     canonical: '/',
+    // Single-language site (Czech only) — self-referencing hreflang tells
+    // search engines explicitly which language this page is, and
+    // x-default covers visitors with no matching language preference.
+    languages: {
+      'cs-CZ': '/',
+      'x-default': '/',
+    },
   },
   openGraph: {
     type: 'website',
