@@ -23,10 +23,53 @@ const jetbrainsMono = JetBrains_Mono({
   weight: ['500'],
 });
 
+// TODO: nahradit skutečnou doménou po nasazení (viz .env / hosting).
+const siteUrl = process.env.SITE_URL;
+const title = 'Momentum Minds | Marketing náboru a zpracování kovů';
+const description =
+  'Momentum Minds spojuje marketing náboru s navazující organizační podporou a průmyslové služby v oblasti zpracování kovů.';
+
 export const metadata = {
-  title: 'Momentum Minds | Marketing náboru a zpracování kovů',
-  description:
-    'Momentum Minds spojuje marketing náboru s navazující organizační podporou a průmyslové služby v oblasti zpracování kovů.',
+  metadataBase: new URL(siteUrl),
+  title,
+  description,
+  authors: [{ name: 'MomentumMinds s.r.o.' }],
+  creator: 'MomentumMinds s.r.o.',
+  publisher: 'MomentumMinds s.r.o.',
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+    },
+  },
+  alternates: {
+    canonical: '/',
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'cs_CZ',
+    url: siteUrl,
+    siteName: 'Momentum Minds',
+    title,
+    description,
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Momentum Minds — Ideas that create momentum.',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title,
+    description,
+    images: ['/og-image.png'],
+  },
 };
 
 export default async function RootLayout({ children }) {
