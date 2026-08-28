@@ -6,20 +6,22 @@ import { Analytics } from '@vercel/analytics/next';
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
 
 export default function AnalyticsScripts({ isGranted }) {
-  if (!isGranted || !GA_ID) {
+  if (!isGranted) {
     return null;
   }
 
   return (
     <>
       <Analytics />
-      <Script
-        src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
-        strategy="afterInteractive"
-      />
+      {GA_ID ? (
+        <>
+          <Script
+            src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+            strategy="afterInteractive"
+          />
 
-      <Script id="google-analytics" strategy="afterInteractive">
-        {`
+          <Script id="google-analytics" strategy="afterInteractive">
+            {`
           window.dataLayer = window.dataLayer || [];
 
           function gtag() {
@@ -32,7 +34,9 @@ export default function AnalyticsScripts({ isGranted }) {
             anonymize_ip: true
           });
         `}
-      </Script>
+          </Script>
+        </>
+      ) : null}
     </>
   );
 }
