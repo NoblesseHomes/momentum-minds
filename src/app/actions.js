@@ -162,8 +162,8 @@ export async function sendFeedbackEmail(formData) {
     // of relying on catch to see it.
     const { error } = await resend.emails.send({
       // Po připojení vlastní domény v Resendu nahraďte za info@momentumminds.cz.
-      from: 'Momentum Minds <info@yourdomain.com>',
-      to: 'info@yourdomain.com',
+      from: 'Momentum Minds <info@momentumminds.cz>',
+      to: 'info@momentumminds.cz',
       replyTo: email,
       subject: `Nová poptávka z webu — ${name}`,
       html: buildFeedbackEmailHtml({ name, email, phone, topic, message }),
