@@ -1,6 +1,7 @@
 // src/components/AnalyticsScripts.js
 
 import Script from 'next/script';
+import { Analytics } from '@vercel/analytics/next';
 
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
 
@@ -11,6 +12,7 @@ export default function AnalyticsScripts({ isGranted }) {
 
   return (
     <>
+      <Analytics />
       <Script
         src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
         strategy="afterInteractive"
