@@ -5,6 +5,7 @@ import { cookies } from 'next/headers';
 import CookieBanner from '@/components/CookieBanner';
 import AnalyticsScripts from '@/components/AnalyticsScripts';
 import OrganizationJsonLd from '@/components/OrganizationJsonLd';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 const archivo = Archivo({
   variable: '--font-archivo',
@@ -102,6 +103,7 @@ export default async function RootLayout({ children }) {
         {!consentHasValue && <CookieBanner />}
 
         <AnalyticsScripts isGranted={isAnalyticsGranted} />
+        <SpeedInsights />
       </body>
     </html>
   );
