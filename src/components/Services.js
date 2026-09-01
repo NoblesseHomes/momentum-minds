@@ -113,12 +113,19 @@ function DirectionBanner({ index, Icon, title, intro, src, alt }) {
 
       <div className="absolute inset-x-0 bottom-0 p-5 sm:p-8 lg:p-10">
         <span className="flex h-11 w-11 items-center justify-center rounded-full bg-white/15 backdrop-blur-sm">
-          <Icon size={22} strokeWidth={1.5} className="text-white" aria-hidden="true" />
+          <Icon
+            size={22}
+            strokeWidth={1.5}
+            className="text-white"
+            aria-hidden="true"
+          />
         </span>
         <h3 className="mt-4 text-h3 font-display font-semibold text-white lg:text-h3-desktop">
           {title}
         </h3>
-        <p className="mt-2 max-w-xl text-body text-white/85 lg:text-body-desktop">{intro}</p>
+        <p className="mt-2 max-w-xl text-body text-white/85 lg:text-body-desktop">
+          {intro}
+        </p>
       </div>
     </div>
   );
@@ -128,7 +135,10 @@ function CompactList({ items }) {
   return (
     <ul className="space-y-2">
       {items.map((item) => (
-        <li key={item} className="flex items-baseline gap-2.5 text-body-sm text-text-secondary lg:text-body-sm-desktop">
+        <li
+          key={item}
+          className="flex items-baseline gap-2.5 text-body-sm text-text-secondary lg:text-body-sm-desktop"
+        >
           <span
             className="h-1 w-1 shrink-0 translate-y-[-2px] rounded-full bg-text-muted"
             aria-hidden="true"
@@ -159,7 +169,9 @@ function ServiceColumn({ Icon, title, items, src, alt }) {
       <div className="p-6 lg:p-8">
         <div className="flex items-center gap-2">
           <Icon size={18} className="text-accent-primary" aria-hidden="true" />
-          <h4 className="font-display text-base font-semibold text-text-primary">{title}</h4>
+          <h4 className="font-display text-base font-semibold text-text-primary">
+            {title}
+          </h4>
         </div>
         <div className="mt-4">
           <CompactList items={items} />
@@ -185,70 +197,10 @@ export default function Services() {
             Co nabízíme
           </h2>
           <p className="mt-3 text-body-lg text-text-secondary lg:text-body-lg-desktop">
-            Dva samostatné směry, jeden přístup: přebíráme přesně vymezenou část vašeho
-            procesu a plníme ji jako spolehlivý, vestavěný partner.
+            Dva samostatné směry, jeden přístup: přebíráme přesně vymezenou část
+            vašeho procesu a plníme ji jako spolehlivý, vestavěný partner.
           </p>
         </motion.div>
-
-        {/* Block 1 — Marketing & Advertising + Business Support (concept v3
-            §7.3 treats these as one combined "direction 1" block) */}
-        <div className="mt-16 border-t border-border pt-16">
-          <motion.div {...blockOneReveal}>
-            <DirectionBanner
-              index="01"
-              Icon={TbSpeakerphone}
-              title="Marketing & Advertising"
-              intro="Reklama, marketing a propagace pracovních nabídek — hlavně pro agentury práce, personální společnosti a zaměstnavatele s pravidelnou potřebou náboru. Business Support tento směr doplňuje o organizační zajištění."
-              src="/images/services/recruitment.jpg"
-              alt="Dva kolegové procházejí uličkou skladu a konzultují průběh práce"
-            />
-          </motion.div>
-
-          <motion.div {...blockOneMediaReveal} className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2">
-            <ServiceColumn
-              Icon={TbSpeakerphone}
-              title="Marketing & Advertising"
-              items={MARKETING_ADVERTISING}
-              src="/images/services/promote.jpg"
-              alt="Tým plánuje náborovou kampaň u tabule s poznámkami"
-            />
-            <ServiceColumn
-              Icon={TbUserCheck}
-              title="Business Support"
-              items={BUSINESS_SUPPORT}
-              src="/images/services/support.jpg"
-              alt="Administrativní podpis dokumentu na pracovním stole"
-            />
-          </motion.div>
-
-          <motion.p
-            {...blockOneMediaReveal}
-            className="mt-6 flex items-start gap-2.5 rounded-lg bg-accent-primary/5 px-4 py-3 text-body-sm text-text-secondary lg:text-body-sm-desktop"
-          >
-            <TbCheck size={16} className="mt-0.5 shrink-0 text-accent-primary" aria-hidden="true" />
-            <span>
-              <strong className="font-medium text-text-primary">
-                Vy řídíte nábor. My zajišťujeme podporu kolem něj.
-              </strong>{' '}
-              Rozsah spolupráce si zvolíte sami — pouze reklama a propagace, nebo reklama +
-              organizační, logistická a administrativní podpora.
-            </span>
-          </motion.p>
-
-          {/* concept v3 §1 — required legal scope clarification, must be
-              visible, not fine print. */}
-          <motion.p
-            {...blockOneMediaReveal}
-            className="mt-4 flex items-start gap-2.5 rounded-lg border border-border px-4 py-3 text-body-sm text-text-secondary lg:text-body-sm-desktop"
-          >
-            <TbInfoCircle size={16} className="mt-0.5 shrink-0 text-text-muted" aria-hidden="true" />
-            <span>
-              Momentum Minds není personální agentura a nezajišťuje zprostředkování
-              zaměstnání. Samotný výběr kandidátů a pracovněprávní vztahy zůstávají
-              plně v kompetenci klienta.
-            </span>
-          </motion.p>
-        </div>
 
         {/* Block 2 — Metalworking & Assembly */}
         <div className="mt-16 border-t border-border pt-16">
@@ -299,7 +251,11 @@ export default function Services() {
             {...blockTwoMediaReveal}
             className="mt-6 flex items-start gap-3 rounded-lg border border-accent-primary/25 bg-accent-primary/5 px-4 py-4"
           >
-            <TbMapPin size={20} className="mt-0.5 shrink-0 text-accent-primary" aria-hidden="true" />
+            <TbMapPin
+              size={20}
+              className="mt-0.5 shrink-0 text-accent-primary"
+              aria-hidden="true"
+            />
             <div>
               <p className="text-body font-medium text-text-primary lg:text-body-desktop">
                 Pracujeme na místě u zákazníka — bez vlastní výroby.
@@ -310,13 +266,87 @@ export default function Services() {
                     key={principle}
                     className="flex items-center gap-1.5 text-body-sm text-text-secondary lg:text-body-sm-desktop"
                   >
-                    <TbCheck size={14} className="shrink-0 text-accent-primary" aria-hidden="true" />
+                    <TbCheck
+                      size={14}
+                      className="shrink-0 text-accent-primary"
+                      aria-hidden="true"
+                    />
                     {principle}
                   </li>
                 ))}
               </ul>
             </div>
           </motion.div>
+        </div>
+        {/* Block 1 — Marketing & Advertising + Business Support (concept v3
+            §7.3 treats these as one combined "direction 1" block) */}
+        <div className="mt-16 border-t border-border pt-16">
+          <motion.div {...blockOneReveal}>
+            <DirectionBanner
+              index="01"
+              Icon={TbSpeakerphone}
+              title="Marketing & Advertising"
+              intro="Reklama, marketing a propagace pracovních nabídek — hlavně pro agentury práce, personální společnosti a zaměstnavatele s pravidelnou potřebou náboru. Business Support tento směr doplňuje o organizační zajištění."
+              src="/images/services/recruitment.jpg"
+              alt="Dva kolegové procházejí uličkou skladu a konzultují průběh práce"
+            />
+          </motion.div>
+
+          <motion.div
+            {...blockOneMediaReveal}
+            className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2"
+          >
+            <ServiceColumn
+              Icon={TbSpeakerphone}
+              title="Marketing & Advertising"
+              items={MARKETING_ADVERTISING}
+              src="/images/services/promote.jpg"
+              alt="Tým plánuje náborovou kampaň u tabule s poznámkami"
+            />
+            <ServiceColumn
+              Icon={TbUserCheck}
+              title="Business Support"
+              items={BUSINESS_SUPPORT}
+              src="/images/services/support.jpg"
+              alt="Administrativní podpis dokumentu na pracovním stole"
+            />
+          </motion.div>
+
+          <motion.p
+            {...blockOneMediaReveal}
+            className="mt-6 flex items-start gap-2.5 rounded-lg bg-accent-primary/5 px-4 py-3 text-body-sm text-text-secondary lg:text-body-sm-desktop"
+          >
+            <TbCheck
+              size={16}
+              className="mt-0.5 shrink-0 text-accent-primary"
+              aria-hidden="true"
+            />
+            <span>
+              <strong className="font-medium text-text-primary">
+                Vy řídíte nábor. My zajišťujeme podporu kolem něj.
+              </strong>{' '}
+              Rozsah spolupráce si zvolíte sami — pouze reklama a propagace,
+              nebo reklama + organizační, logistická a administrativní podpora.
+            </span>
+          </motion.p>
+
+          {/* concept v3 §1 — required legal scope clarification, must be
+              visible, not fine print. */}
+          <motion.p
+            {...blockOneMediaReveal}
+            className="mt-4 flex items-start gap-2.5 rounded-lg border border-border px-4 py-3 text-body-sm text-text-secondary lg:text-body-sm-desktop"
+          >
+            <TbInfoCircle
+              size={16}
+              className="mt-0.5 shrink-0 text-text-muted"
+              aria-hidden="true"
+            />
+            <span>
+              Momentum Minds není personální agentura a nezajišťuje
+              zprostředkování zaměstnání. Samotný výběr kandidátů a
+              pracovněprávní vztahy zůstávají plně v kompetenci klienta.
+            </span>
+          </motion.p>
         </div>
       </div>
     </section>
