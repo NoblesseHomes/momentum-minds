@@ -58,17 +58,23 @@ export default function WhyUs() {
   const listReveal = useRevealProps(0.1);
 
   return (
-    <section id="proc-my" className="section-space border-t border-border bg-surface">
+    <section
+      id="proc-my"
+      className="section-space border-t border-border bg-surface"
+    >
       <div className="container-page">
         <motion.div {...headingReveal} className="max-w-2xl">
-          <Eyebrow>Why Momentum Minds</Eyebrow>
+          {/* <Eyebrow>Why Momentum Minds</Eyebrow> */}
           <h2 className="mt-2 text-h2 font-display font-bold text-text-primary lg:text-h2-desktop">
-            Proč Momentum Minds
+            Why Momentum Minds
           </h2>
         </motion.div>
 
         <div className="mt-10 grid grid-cols-1 gap-10 lg:grid-cols-2 lg:items-center lg:gap-16">
-          <motion.div {...photoReveal} className="relative overflow-hidden rounded-2xl border border-border">
+          <motion.div
+            {...photoReveal}
+            className="relative overflow-hidden rounded-2xl border border-border"
+          >
             <Image
               src="/images/why-team.jpg"
               alt="Dvě kolegyně řeší projekt u stolu v kanceláři"
@@ -79,11 +85,19 @@ export default function WhyUs() {
             />
           </motion.div>
 
-          <motion.div {...listReveal} className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+          <motion.div
+            {...listReveal}
+            className="grid grid-cols-1 gap-6 sm:grid-cols-2"
+          >
             {REASONS.map(({ Icon, title, text }) => (
               <div key={title} className="flex gap-3">
                 <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-accent-primary/10">
-                  <Icon size={20} strokeWidth={1.5} className="text-accent-primary" aria-hidden="true" />
+                  <Icon
+                    size={20}
+                    strokeWidth={1.5}
+                    className="text-accent-primary"
+                    aria-hidden="true"
+                  />
                 </span>
                 <div>
                   <h3 className="font-display text-base font-semibold text-text-primary">

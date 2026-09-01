@@ -192,9 +192,9 @@ export default function Services() {
     <section id="sluzby" className="section-space">
       <div className="container-page">
         <motion.div {...headingReveal} className="max-w-2xl">
-          <Eyebrow>What we offer</Eyebrow>
+          {/* <Eyebrow>What we offer</Eyebrow> */}
           <h2 className="mt-2 text-h2 font-display font-bold text-text-primary lg:text-h2-desktop">
-            Co nabízíme
+            What we offer
           </h2>
           <p className="mt-3 text-body-lg text-text-secondary lg:text-body-lg-desktop">
             Dva samostatné směry, jeden přístup: přebíráme přesně vymezenou část
@@ -202,11 +202,11 @@ export default function Services() {
           </p>
         </motion.div>
 
-        {/* Block 2 — Metalworking & Assembly */}
+        {/* Block 1 — Metalworking & Assembly */}
         <div className="mt-16 border-t border-border pt-16">
           <motion.div {...blockTwoReveal}>
             <DirectionBanner
-              index="02"
+              index="01"
               Icon={TbBuildingFactory2}
               title="Metalworking & Assembly"
               intro="Převzetí přesně vymezené části zakázky nebo výrobního procesu klienta a její realizace přímo na místě u zákazníka. Nemáme vlastní výrobní halu."
@@ -278,12 +278,12 @@ export default function Services() {
             </div>
           </motion.div>
         </div>
-        {/* Block 1 — Marketing & Advertising + Business Support (concept v3
+        {/* Block 2 — Marketing & Advertising + Business Support (concept v3
             §7.3 treats these as one combined "direction 1" block) */}
         <div className="mt-16 border-t border-border pt-16">
           <motion.div {...blockOneReveal}>
             <DirectionBanner
-              index="01"
+              index="02"
               Icon={TbSpeakerphone}
               title="Marketing & Advertising"
               intro="Reklama, marketing a propagace pracovních nabídek — hlavně pro agentury práce, personální společnosti a zaměstnavatele s pravidelnou potřebou náboru. Business Support tento směr doplňuje o organizační zajištění."

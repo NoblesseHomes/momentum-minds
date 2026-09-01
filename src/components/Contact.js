@@ -82,9 +82,9 @@ export default function Contact() {
       <section id="kontakt" className="section-space">
         <div className="container-page">
           <motion.div {...headingReveal} className="max-w-2xl">
-            <Eyebrow>Let&apos;s create momentum</Eyebrow>
+            {/* <Eyebrow>Let&apos;s create momentum</Eyebrow> */}
             <h2 className="mt-2 text-h2 font-display font-bold text-text-primary lg:text-h2-desktop">
-              Pojďme společně nastavit řešení
+              Let&apos;s create momentum
             </h2>
             <p className="mt-3 text-body-lg text-text-secondary lg:text-body-lg-desktop">
               Potřebujete zvýšit dosah svých pracovních nabídek? Hledáte
