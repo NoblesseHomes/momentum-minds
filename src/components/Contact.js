@@ -67,7 +67,8 @@ export default function Contact() {
       setSubmitSuccess(true);
     } else {
       setSubmitError(
-        result?.error ?? 'Zprávu se nepodařilo odeslat. Zkuste to prosím později.'
+        result?.error ??
+          'Zprávu se nepodařilo odeslat. Zkuste to prosím později.'
       );
     }
   }
@@ -135,7 +136,7 @@ export default function Contact() {
                     href="mailto:info@momentumminds.cz"
                     className="text-body text-text-secondary underline-offset-4 hover:text-accent-primary hover:underline lg:text-body-desktop"
                   >
-                    info@momentumminds.cz (doplnit)
+                    info@momentumminds.cz
                   </a>
                 </li>
                 <li className="flex items-start gap-3">
